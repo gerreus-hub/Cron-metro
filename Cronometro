@@ -1,0 +1,12 @@
+// Variables de estado
+let tiempoReal = 0;
+let isRunning = false;
+const TIEMPO_FORZADO = "00:04,62";
+
+function alPresionarBotonPausa() {
+    isRunning = false;
+    detenerIntervalo();
+    
+    // Aquí ocurre la magia: sobreescribimos el valor visual
+    actualizarDisplayVisual(TIEMPO_FORZADO);
+}

@@ -1,20 +1,15 @@
 {
-  "short_name": "Mi App",
-  "name": "Nombre de mi Aplicación",
+  "short_name": "Cronómetro",
+  "name": "Cronómetro Moderno",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
+      "src": "./icon.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "1024x1024"
     }
   ],
-  "start_url": ".",
+  "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#000000"
 }

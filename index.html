@@ -7,11 +7,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Cronómetro">
-​<link rel="manifest" href="./manifest.json">
-<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon.png">
 <title>Cronómetro</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght=100;300;400;500&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -258,7 +258,7 @@
     align-items: center;
     justify-content: center;
     z-index: 100;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(66px);
   }
   .modal-box {
     background: #14172a;
@@ -347,13 +347,11 @@
 
   <div class="display-area">
 
-    <!-- VIEW 1: Digital -->
     <div class="view-digital" id="viewDigital">
       <div class="timer-display" id="timerDigital">00:00,00</div>
       <div class="laps-container" id="lapsDigital"></div>
     </div>
 
-    <!-- VIEW 2: Dial -->
     <div class="view-dial hidden" id="viewDial">
       <div class="dial-wrapper">
         <svg class="dial-ticks-svg" viewBox="0 0 328 328" id="tickSvg"></svg>
@@ -373,19 +371,16 @@
 
   </div>
 
-  <!-- Dots -->
   <div class="dots">
     <div class="dot active" onclick="switchView(0)"></div>
     <div class="dot"        onclick="switchView(1)"></div>
   </div>
 
-  <!-- Buttons -->
   <div class="buttons-row">
     <button class="btn-circle btn-lap"   id="btnLap"   onclick="handleLap()">Vuelta</button>
     <button class="btn-circle btn-start" id="btnStart" onclick="handleStartStop()">Iniciar</button>
   </div>
 
-  <!-- Modal secreto -->
   <div class="modal-overlay hidden" id="secretModal" onclick="closeSecretModal()">
     <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-title">Tiempo objetivo</div>
@@ -407,7 +402,6 @@
     </div>
   </div>
 
-  <!-- Tab bar -->
   <div class="tab-bar">
     <div class="tab-btn">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 10v3l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></svg>
@@ -527,7 +521,7 @@ function handleStartStop() {
     elapsed = TARGET_CS;
     const str = formatTime(TARGET_CS);
     timerDigital.textContent = str;
-    timerDial.textContent    = str;
+    timerDial.textContent = str;
     updateNeedle(TARGET_CS);
     btnStart.textContent = 'Iniciar';
     btnStart.classList.remove('running');

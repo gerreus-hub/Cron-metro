@@ -23,20 +23,21 @@
     --btn-start: #22305a;
   }
 
-  html, body {
+    html, body {
     height: 100%;
+    width: 100%;
+    margin: 0;
     background: var(--bg);
     font-family: 'Roboto', sans-serif;
     color: var(--text);
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Quitamos el 'display: flex' que centraba la columna */
   }
 
-    .phone {
+
+      .phone {
     width: 100%;
-    height: 100vh; /* Ocupa el 100% del alto de la pantalla */
+    height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -45,17 +46,19 @@
   }
 
 
-    .bg-glow {
+
+      .bg-glow {
     position: absolute;
-    width: 200vw; /* 200% del ancho de la pantalla para que no se vea el fin */
-    height: 200vh; 
-    background: radial-gradient(circle at center, rgba(22,32,90,0.8) 0%, rgba(10,15,50,0.3) 50%, transparent 70%);
+    width: 200vw; 
+    height: 150vh;
+    background: radial-gradient(circle, rgba(22,32,90,0.8) 0%, rgba(10,15,50,0.3) 55%, transparent 75%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
   }
+
 
 
 

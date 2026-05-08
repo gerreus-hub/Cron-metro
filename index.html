@@ -550,16 +550,17 @@ function doReset() {
 }
 
 function handleLap() {
+  // Contar taps siempre, sin importar el estado
+  lapTapCount++;
+  clearTimeout(lapTapTimer);
+
+  if (lapTapCount >= 3) {
+    lapTapCount = 0;
+    openSecretModal();
+    return;
+  }
+
   if (!running) {
-    lapTapCount++;
-    clearTimeout(lapTapTimer);
-
-    if (lapTapCount >= 3) {
-      lapTapCount = 0;
-      openSecretModal();
-      return;
-    }
-
     // Esperar 600ms: si no llegan más taps, ejecutar reset normal
     lapTapTimer = setTimeout(() => {
       if (lapTapCount > 0) doReset();
@@ -567,12 +568,18 @@ function handleLap() {
     }, 600);
     return;
   }
-  // Corriendo: registrar vuelta
-  const cs      = Math.floor((performance.now() - startTime) / 10) + elapsed;
-  const lapTime = cs - lapStartElapsed;
-  lapStartElapsed = cs;
-  laps.unshift({ n: laps.length + 1, t: formatTime(lapTime) });
-  renderLaps();
+
+  // Corriendo: registrar vuelta después del timeout
+  lapTapTimer = setTimeout(() => {
+    if (lapTapCount > 0) {
+      const cs      = Math.floor((performance.now() - startTime) / 10) + elapsed;
+      const lapTime = cs - lapStartElapsed;
+      lapStartElapsed = cs;
+      laps.unshift({ n: laps.length + 1, t: formatTime(lapTime) });
+      renderLaps();
+    }
+    lapTapCount = 0;
+  }, 600);
 }
 
 function openSecretModal() {
